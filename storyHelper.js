@@ -46,6 +46,8 @@ function sendResponse(arrStories, response) {
     
     // write and send response
     response.writeHead(200, {"Content-Type": "application/json"});
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    response.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
     response.write(finalJSON);
     response.end();
     
