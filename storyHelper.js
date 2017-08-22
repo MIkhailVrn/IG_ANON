@@ -36,9 +36,9 @@ function sendResponse(arrStories, response) {
     var arrMedia = [];
     arrStories.forEach(function(item){
         if (item._params.video){
-            arrMedia.push({url : item._params.video.versions[0].url});
+            arrMedia.push({url : item._params.video.versions[0].url, type: 'video'});
         } else if (item._params.images){
-            arrMedia.push({url :item._params.images});
+            arrMedia.push({url :item._params.images, type: 'image'});
         }
     });
     
