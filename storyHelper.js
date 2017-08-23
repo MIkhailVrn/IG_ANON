@@ -15,7 +15,7 @@ async function startSession (sTargetUserName, userName, password, response){
     .then(function(session) {
        
         // search for Target user by name, to get his ID
-        return [session, Client.Account.searchForUser(session, sTargetUserName).catch(sendNotFoundResponse(response)), response];
+        return [session, Client.Account.searchForUser(session, sTargetUserName).catch(function() {sendNotFoundResponse(response)}), response];
         
     })
     .spread(getStoriesForAccount);
