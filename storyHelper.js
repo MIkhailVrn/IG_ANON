@@ -15,14 +15,17 @@ async function startSession (sTargetUserName, userName, password, response){
     .then(function(session) {
        
         // search for Target user by name, to get his ID
-        return [session, Client.Account.searchForUser(session, sTargetUserName), response]  
+        return [session, Client.Account.searchForUser(session, sTargetUserName).catch(sendNotFoundResponse(response)), response];
         
     })
     .spread(getStoriesForAccount);
 }
 
 async function getStoriesForAccount(session, account, response) {
-    var a = 1 ;
+    
+    if (!account.id){
+        return;
+    }
     
     var feed = new Client.Feed.UserStory(session, [account.id.toString()]);
     var results = await feed.get();
@@ -51,6 +54,14 @@ function sendResponse(arrStories, response) {
     response.write(finalJSON);
     response.end();
     
+}
+
+function sendNotFoundResponse (response){
+    // write and send response
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    response.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
+    response.writeHead(201, {"Content-Type": "application/json"});
+    response.end();
 }
 
 
