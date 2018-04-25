@@ -1,12 +1,16 @@
 var users = [
-    { 
-        userName : 'chudo.sredstvo1',
-        password : 'InstFake1' //should be 811
-    }//,
+    // { 
+    //     userName : 'chudo.sredstvo1',
+    //     password : 'InstFake1' //should be 811
+    // }//,
     //{ 
     //    userName : 'world.best.hotties',
     //    password : 'HotRep811Hotties' 
     //}
+    { 
+        userName : 'vsenezrya3669',
+        password : 'priora811' //should be 811
+    }
 ];
 
 // get random user name and password
