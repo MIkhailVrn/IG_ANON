@@ -1,0 +1,19 @@
+{
+  "name": "chat-example",
+  "version": "0.0.0",
+  "description": "A chat example to showcase how to use `socket.io` with a static `express` server with `async` for control flow.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": "",
+  "author": "Mostafa Eweda <mo.eweda@gmail.com>",
+  "dependencies": {
+    "7": "0.0.1",
+    "async": "~0.2.8",
+    "express": "~3.2.4",
+    "instagram-private-api": "^0.6.2",
+   // "node": "^8.3.0",
+    "socket.io": "~0.9.14"
+  }
+}
