@@ -34,7 +34,7 @@ async function getStoriesForAccount(session, account, response) {
     sendResponse(arrStories, response);
 }
 
-function sendResponse(arrStories, response) {
+function sendResponse(arrStories, response, isPrivate) {
     // prepare array of links to stories in the best qualities
     var arrMedia = [];
     arrStories.forEach(function(item){
@@ -50,7 +50,13 @@ function sendResponse(arrStories, response) {
     // write and send response
     response.setHeader('Access-Control-Allow-Origin', '*');
     response.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
-    response.writeHead(200, {"Content-Type": "application/json"});
+    
+    if (!isPrivate){
+        response.writeHead(200, {"Content-Type": "application/json"});
+    } else {
+        response.writeHead(202, {"Content-Type": "application/json"});
+    }
+    
     response.write(finalJSON);
     response.end();
     
