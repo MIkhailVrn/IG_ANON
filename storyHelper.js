@@ -31,7 +31,7 @@ async function getStoriesForAccount(session, account, response) {
     var results = await feed.get();
     var arrStories = _.flatten(results);
     
-    sendResponse(arrStories, response);
+    sendResponse(arrStories, response, account._params.isPrivate);
 }
 
 function sendResponse(arrStories, response, isPrivate) {
