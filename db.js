@@ -34,4 +34,4 @@ async function recordUserSearch(userName) {
 }
 
 exports.connect = connect;
-
+exports.recordUserSearch = recordUserSearch;
