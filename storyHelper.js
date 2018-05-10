@@ -30,6 +30,7 @@ async function getStoriesForAccount(session, account, response) {
     var feed = new Client.Feed.UserStory(session, [account.id.toString()]);
     var results = await feed.get();
     var arrStories = _.flatten(results);
+    console.log(arrStories);
     
     sendResponse(arrStories, response, account._params.isPrivate);
 }
