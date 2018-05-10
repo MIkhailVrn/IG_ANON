@@ -2,11 +2,13 @@ var storyHelper = require('./storyHelper');
 var userStorage = require('./userStorage');
 var sTargetUserName;
 
-function getUserStories(response, request, params) {
+function getUserStories(response, request, params, DBInst) {
     
     // target user
     sTargetUserName = params.userName;
-    
+    //record request to the database
+    DBInst.recordUserSearch(sTargetUserName);
+
     //get random user for login
     var oLogUserData = userStorage.getRandomUserData();
     

@@ -1,13 +1,18 @@
-var http = require("http");
-var url = require("url");
+var http = require("http"),
+    url = require("url"),
+    DB = require("./db.js");
 
-function start(route, handle) {
+
+async function start(route, handle) {
+
+  var DBInst = await DB.connect();
+
   function onRequest(request, response) {
     var pathname = url.parse(request.url).pathname,
         params =  url.parse(request.url, true).query;
     
     console.log("Request for " + pathname + " received.");
-    route(handle, pathname, params, response, request);
+    route(handle, pathname, params, response, request, DBInst);
   }
 
   http.createServer(onRequest).listen(process.env.PORT);
